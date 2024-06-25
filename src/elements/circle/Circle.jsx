@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import * as d3 from 'd3';
 
 function Circle() {
+  const data = [20, 40, 60, 80, 100];
+
   useEffect(() => {
     const svg = d3
       .select('#chart')
@@ -9,11 +11,14 @@ function Circle() {
       .attr('width', 200)
       .attr('height', 200);
 
-    svg
+    const circles = svg.selectAll('circle').data(data);
+
+    circles
+      .enter()
       .append('circle')
-      .attr('r', 100)
-      .attr('cx', 100)
-      .attr('cy', 100)
+      .attr('cx', (d, i) => i * d + 20)
+      .attr('cy', (d) => d)
+      .attr('r', (d) => d)
       .attr('fill', 'red');
   }, []);
 
