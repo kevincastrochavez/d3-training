@@ -1,12 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import * as d3 from 'd3';
 
 function Circle() {
-  const svgRef = useRef();
-
   useEffect(() => {
-    // d3 select svg and append circle
-    d3.select(svgRef.current)
+    const svg = d3
+      .select('#chart')
+      .append('svg')
+      .attr('width', 200)
+      .attr('height', 200);
+
+    svg
       .append('circle')
       .attr('r', 100)
       .attr('cx', 100)
@@ -14,7 +17,7 @@ function Circle() {
       .attr('fill', 'red');
   }, []);
 
-  return <svg width={200} height={200} ref={svgRef}></svg>;
+  return <div id='chart'></div>;
 }
 
 export default Circle;
