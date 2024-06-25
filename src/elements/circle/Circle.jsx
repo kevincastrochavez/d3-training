@@ -6,7 +6,7 @@ function Circle() {
 
   useEffect(() => {
     const svg = d3
-      .select('#chart')
+      .select('#circle')
       .append('svg')
       .attr('width', 200)
       .attr('height', 200);
@@ -20,9 +20,9 @@ function Circle() {
       .attr('cy', (d) => d)
       .attr('r', (d) => d)
       .attr('fill', 'red');
-  }, []);
+  }, [data]);
 
-  return <div id='chart'></div>;
+  return <div id='circle'></div>;
 }
 
 export default Circle;
